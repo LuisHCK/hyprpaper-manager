@@ -1,0 +1,15 @@
+{
+    "$schema": "../gen/schemas/linux-schema.json",
+    "identifier": "pictures-read",
+    "description": "Allow reading image files under the user's Pictures directory on Linux.",
+    "platforms": ["linux"],
+    "windows": ["main"],
+    "permissions": [
+        "core:default",
+        "opener:default",
+        {
+            "identifier": "fs:allow-picture-read",
+            "allow": [{ "path": "$HOME/Pictures" }, { "path": "$HOME/Pictures/**" }]
+        }
+    ]
+}

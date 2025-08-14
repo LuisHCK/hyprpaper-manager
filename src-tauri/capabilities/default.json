@@ -1,0 +1,23 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Capability for the main window (Linux): dialog open + read images from Pictures + app config read/write",
+  "platforms": ["linux"],
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "opener:default",
+    "dialog:allow-open",
+    "fs:allow-read-dir",
+    "fs:allow-read-file",
+    "fs:allow-read",
+    "fs:allow-write-file",
+    "fs:allow-write",
+    "fs:allow-appconfig-read",
+    "fs:allow-appconfig-write",
+    "fs:scope-appconfig-recursive",
+    "fs:scope-picture-recursive",
+    "core:path:allow-resolve-directory",
+    "core:path:allow-join"
+  ]
+}

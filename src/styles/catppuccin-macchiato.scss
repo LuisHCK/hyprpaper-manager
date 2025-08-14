@@ -1,0 +1,125 @@
+@use 'sass:color';
+// Catppuccin Macchiato palette
+// Reference: https://github.com/catppuccin/catppuccin
+$ctp-rosewater: #f4dbd6;
+$ctp-flamingo: #f0c6c6;
+$ctp-pink: #f5bde6;
+$ctp-mauve: #c6a0f6;
+$ctp-red: #ed8796;
+$ctp-maroon: #ee99a0;
+$ctp-peach: #f5a97f;
+$ctp-yellow: #eed49f;
+$ctp-green: #a6da95;
+$ctp-teal: #8bd5ca;
+$ctp-sky: #91d7e3;
+$ctp-sapphire: #7dc4e4;
+$ctp-blue: #8aadf4;
+$ctp-lavender: #b7bdf8;
+$ctp-text: #cad3f5;
+$ctp-subtext1: #b8c0e0;
+$ctp-subtext0: #a5adcb;
+$ctp-overlay2: #939ab7;
+$ctp-overlay1: #8087a2;
+$ctp-overlay0: #6e738d;
+$ctp-surface2: #5b6078;
+$ctp-surface1: #494d64;
+$ctp-surface0: #363a4f;
+$ctp-base: #24273a;
+$ctp-mantle: #1e2030;
+$ctp-crust: #181926;
+
+// Proper Bulma v1 modular usage: configure variables on the utilities layer, then load the rest.
+@use 'bulma/sass/utilities' with (
+  $primary: $ctp-mauve,
+  $link: $ctp-blue,
+  $info: $ctp-sapphire,
+  $success: $ctp-green,
+  $warning: $ctp-peach,
+  $danger: $ctp-red,
+  $family-primary: 'Inter, system-ui, sans-serif',
+  $control-radius: 6px
+);
+@use 'bulma/sass/base';
+@use 'bulma/sass/elements';
+@use 'bulma/sass/form';
+@use 'bulma/sass/components';
+@use 'bulma/sass/grid';
+@use 'bulma/sass/layout';
+@use 'bulma/sass/helpers';
+
+// Additional custom utilities or overrides
+html, body {
+  background: $ctp-base;
+  color: $ctp-text;
+}
+
+.section, .hero {
+  background-color: transparent;
+}
+
+.card {
+  background-color: $ctp-surface0;
+  color: $ctp-text;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.4), 0 4px 6px -1px rgba(0,0,0,0.3);
+  border: 1px solid $ctp-surface1;
+}
+
+.button.is-primary {
+  background-color: $ctp-mauve;
+  border-color: $ctp-mauve;
+  color: $ctp-crust;
+  text-shadow: none;
+}
+.button.is-primary:hover,
+.button.is-primary.is-hovered {
+  background-color: color.adjust($ctp-mauve, $lightness: 5%);
+  border-color: color.adjust($ctp-mauve, $lightness: 5%);
+  color: $ctp-crust;
+}
+.button.is-primary:active,
+.button.is-primary.is-active {
+  background-color: color.adjust($ctp-mauve, $lightness: -5%);
+  border-color: color.adjust($ctp-mauve, $lightness: -5%);
+  color: $ctp-crust;
+}
+
+// Larger checkbox styling
+$checkbox-size: 1.5rem;
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1.2;
+}
+
+.checkbox input[type='checkbox'] {
+  width: $checkbox-size;
+  height: $checkbox-size;
+  margin: 0;
+  vertical-align: middle;
+  accent-color: $ctp-mauve; // modern browsers
+  background-color: $ctp-surface0;
+  border: 1px solid $ctp-surface1;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, box-shadow .15s;
+  flex-shrink: 0;
+}
+
+.checkbox input[type='checkbox']:hover { border-color: $ctp-surface2; }
+.checkbox input[type='checkbox']:focus-visible { outline: 2px solid $ctp-mauve; outline-offset: 2px; }
+.checkbox input[type='checkbox']:checked { border-color: $ctp-mauve; }
+
+// Extra large variant if needed: add className="checkbox is-xl"
+.checkbox.is-xl input[type='checkbox'] { width: 1.75rem; height: 1.75rem; }
+
+// Match input rounding to button rounding
+.input, .textarea, .select select, .select, .file-cta, .file-name {
+  border-radius: 6px !important;
+}
+
+// Optional: unify focus outline color
+.input:focus, .textarea:focus, .select select:focus {
+  box-shadow: 0 0 0 2px rgba($ctp-mauve, 0.35);
+  border-color: color.adjust($ctp-mauve, $lightness: 5%);
+}
